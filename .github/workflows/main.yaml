@@ -1,4 +1,5 @@
 name: A workflow for building Buildroot artifacts
+on: push
 
 jobs:
   build:
