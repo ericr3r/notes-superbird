@@ -22,6 +22,7 @@ jobs:
 
       - name: Build
         run: |
+          sudo chown -R nerves:nerves $GITHUB_WORKSPACE
           sudo -u nerves make
 
       - name: Upload Artifacts and Create Release
