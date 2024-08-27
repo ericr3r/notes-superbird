@@ -10,7 +10,8 @@ jobs:
     
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        run: |
+          sudo -u nerves git clone https://${{ github.actor }}:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }} $GITHUB_WORKSPACE
 
       - name: Setup cache
         id: cache-buildroot-downloads
