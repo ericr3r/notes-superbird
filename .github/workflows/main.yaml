@@ -7,6 +7,7 @@ jobs:
     runs-on: ubuntu-latest
     container:
       image: ghcr.io/nerves-project/nerves_system_br:1.28.2
+      options: --user root
     
     steps:
       - name: Checkout
@@ -21,7 +22,7 @@ jobs:
 
       - name: Build
         run: |
-          make
+          sudo -u nerves make
 
       - name: Upload Artifacts and Create Release
         if: contains(github.ref, 'tags')
