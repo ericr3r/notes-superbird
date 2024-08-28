@@ -27,3 +27,6 @@ preconfig: $(BUILDROOT_DIR) $(BR2_DEFCONFIG)
 build: preconfig
 	$(MAKE) -C $(BUILDROOT_DIR) BR2_EXTERNAL=$(PROJECT_DIR)
 
+
+boot: 
+	python ./amlogic_device.py --initrd ./initrd/env_initrd.txt ./_build/output/images/Image ./_build/output/images/rootfs.cpio.uboot  ./_build/output/images/meson-g12a-superbird.dtb
