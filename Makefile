@@ -7,7 +7,7 @@ DEFCONFIG = superbird_initrd_defconfig
 BR2_DEFCONFIG = $(BR2_EXTERNAL)/configs/$(DEFCONFIG)
 BUILDROOT_DIR = _build
 
-all: build 
+all: build
 
 $(BUILDROOT_ARCHIVE):
 	@echo "Downloading Buildroot..."
@@ -16,14 +16,15 @@ $(BUILDROOT_ARCHIVE):
 $(BUILDROOT_DIR): $(BUILDROOT_ARCHIVE)
 	@echo "Extracting Buildroot..."
 	tar -xzf $(BUILDROOT_ARCHIVE)
-	ln -sf buildroot-$(BUILDROOT_VERSION) $(BUILDROOT_DIR)
 
 # Copy the defconfig before running certain targets
 .PHONY: preconfig
 preconfig: $(BUILDROOT_DIR) $(BR2_DEFCONFIG)
 	@echo "Copying defconfig..."
+	ln -sf buildroot-$(BUILDROOT_VERSION) $(BUILDROOT_DIR)
 	$(MAKE) -C $(BUILDROOT_DIR) BR2_EXTERNAL=$(BR2_EXTERNAL) BR2_DEFCONFIG=$(BR2_DEFCONFIG) defconfig
 
+.PHONY: build
 build: preconfig
 	$(MAKE) -C $(BUILDROOT_DIR) BR2_EXTERNAL=$(PROJECT_DIR)
 
