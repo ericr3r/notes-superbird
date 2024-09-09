@@ -5,7 +5,7 @@ PROJECT_DIR = $(CURDIR)/initrd/
 BR2_EXTERNAL = $(PROJECT_DIR)
 DEFCONFIG = superbird_initrd_defconfig
 BR2_DEFCONFIG = $(BR2_EXTERNAL)/configs/$(DEFCONFIG)
-BUILDROOT_DIR = _build
+BUILD_DIR = _build
 
 all: build
 
@@ -13,21 +13,19 @@ $(BUILDROOT_ARCHIVE):
 	@echo "Downloading Buildroot..."
 	wget $(BUILDROOT_URL)
 
-$(BUILDROOT_DIR): $(BUILDROOT_ARCHIVE)
+$(BUILD_DIR): $(BUILDROOT_ARCHIVE)
 	@echo "Extracting Buildroot..."
-	tar -xzf $(BUILDROOT_ARCHIVE)
+	tar -xzf $(BUILDROOT_ARCHIVE) --transform 's/buildroot-$(BUILDROOT_VERSION)/_build/'
 
 # Copy the defconfig before running certain targets
 .PHONY: preconfig
-preconfig: $(BUILDROOT_DIR) $(BR2_DEFCONFIG)
+preconfig: $(BUILD_DIR) $(BR2_DEFCONFIG)
 	@echo "Copying defconfig..."
-	ln -sf buildroot-$(BUILDROOT_VERSION) $(BUILDROOT_DIR)
-	$(MAKE) -C $(BUILDROOT_DIR) BR2_EXTERNAL=$(BR2_EXTERNAL) BR2_DEFCONFIG=$(BR2_DEFCONFIG) defconfig
+	$(MAKE) -C $(BUILD_DIR) BR2_EXTERNAL=$(BR2_EXTERNAL) BR2_DEFCONFIG=$(BR2_DEFCONFIG) defconfig
 
 .PHONY: build
 build: preconfig
-	$(MAKE) -C $(BUILDROOT_DIR) BR2_EXTERNAL=$(PROJECT_DIR)
-
+	$(MAKE) -C $(BUILD_DIR) BR2_EXTERNAL=$(PROJECT_DIR)
 
 boot: 
 	python ./amlogic_device.py --initrd ./initrd/env_initrd.txt ./_build/output/images/Image ./_build/output/images/rootfs.cpio.uboot  ./_build/output/images/meson-g12a-superbird.dtb
