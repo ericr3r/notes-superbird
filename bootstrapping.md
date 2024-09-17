@@ -17,6 +17,15 @@ Allow the unifreq kernel to read AML partition table: https://github.com/ophub/a
 [full reserved partition backup](https://github.com/err4o4/spotify-car-thing-reverse-engineering/issues/30#issuecomment-2161567419)
 My backup `ampart` partitions output is in `ampart_partitions.txt`.
 
+### Update UBoot env 
+
+Using [Superbird Tool](https://github.com/bishopdynamics/superbird-tool), run the following commands after entering `burn mode`.
+
+```
+  python3 superbird_tool.py --disable_charger_check
+
+```
+
 ### Retrieve and Decrypt dtb
 
 Please follow the [Decrypt AML dtb](https://7ji.github.io/crack/2023/01/08/decrypt-aml-dtb.html) to get the decrypted dtb from stock firmware. I uploaded one but it's recommended you do that using your own device. 
@@ -50,7 +59,7 @@ On the *host*, scp the backups and copy needed files to superbird:
 ```
     scp superbird@172.16.42.2:/home/superbird/bootloader.img bootloader.img
     scp superbird@172.16.42.2:/home/superbird/stock_dtb.img stock_dtb.img
-    scp decrypted.dtb superbird@172.16.42.2:/home/superbird/stock_dtb.img
+    scp decrypted.dtb superbird@172.16.42.2:/home/superbird/decrypted.dtb
     scp ~/Downloads/clock-0.1.0.fw superbird@172.16.42.2:/home/superbird/clock.fw
 ```
 

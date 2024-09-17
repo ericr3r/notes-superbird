@@ -6,8 +6,8 @@
 
 Anyway, if you still think this will become e-waste for you, **you can for sure support this project by sending it to [Alex Cao](https://github.com/alexcaoys) or me :)** 
 
-> [!WARNING]
-> TRY EVERYTHING BELOW AT YOUR OWN RISK!!! If you don't know what you are doing, STOP**.
+> [!CAUTION]
+> TRY EVERYTHING BELOW AT YOUR OWN RISK!!! If you don't know what you are doing, *STOP*.
 
 **Kernel repo**: https://github.com/alexcaoys/linux-superbird-6.6.y
 
