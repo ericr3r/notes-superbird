@@ -2,7 +2,7 @@
 
 **superbird** (Spotify&trade; Car Thing) should and could be a brilliant device with a compact package, good enough I/O and a soc better than Raspberry Pi 2 W (although without WiFi and ports). Please keep in mind that this is an embedded device, don't expect it to solve any complicated tasks! 
 
-<img src="buildroot/images/sway_foot.jpg" width="300"><img src="buildroot/images/overskride.jpg" width="300"><img src="buildroot/images/youtube.jpg" width="300">
+<img src="nerves/images/phoenix_liveview.jpg" width="300"><img src="nerves/images/scenic_clock.jpg" width="300">
 
 Anyway, if you still think this will become e-waste for you, **you can for sure support this project by sending it to [Alex Cao](https://github.com/alexcaoys) or me :)** 
 
@@ -25,7 +25,3 @@ the [`Nerves superbird System`](https://github.com/ericr3r/nerves_system_superbi
 
 **Beware of all the consequences and you can get started.**
 
-# EXTRA
-
-- [u-Boot](BUILDING.md#u-boot)
-- [Armbian](BUILDING.md#armbian)
