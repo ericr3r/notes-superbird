@@ -1,4 +1,7 @@
-BUILDROOT_VERSION = 2024.05.1
+# Keep this in lockstep with nerves_system_br used by nerves_system_superbird
+# (nerves_system_br 1.35.3 -> Buildroot 2026.08.1) so the debug kernel is built
+# the same way as the real image.
+BUILDROOT_VERSION = 2026.08.1
 BUILDROOT_ARCHIVE = buildroot-$(BUILDROOT_VERSION).tar.gz
 BUILDROOT_URL = https://buildroot.org/downloads/$(BUILDROOT_ARCHIVE)
 PROJECT_DIR = $(CURDIR)/initrd/

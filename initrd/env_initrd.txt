@@ -1,2 +1,2 @@
 active_slot=_b
-bootargs=earlycon=meson,0xff803000 apt_blkdevs=mmcblk2
+bootargs=earlycon=meson,0xff803000 console=ttyAML0,115200n8 keep_bootcon ignore_loglevel apt_blkdevs=mmcblk2
